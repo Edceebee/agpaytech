@@ -52,7 +52,7 @@ public class CountryController {
     @GetMapping("/{countryName}")
     public ResponseEntity<?> getCountryByName(@PathVariable String countryName) {
         try {
-            Country foundCountry = countryService.findByCountryName(countryName);
+            List<Country> foundCountry = countryService.findByCountryName(countryName);
             return new ResponseEntity<>(foundCountry, HttpStatus.FOUND);
         }
         catch (IllegalArgumentException message) {

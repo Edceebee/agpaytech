@@ -46,11 +46,14 @@ public class CountryServiceImpl implements CountryService {
      * @return the Country with name given
      */
     @Override
-    public Country findByCountryName(String countryName) {
-        Optional<Country> findByCountryName = Optional.ofNullable(countryRepository.findCountryByCountryName(countryName).
-                orElseThrow(() -> new IllegalArgumentException("Country not found")));
-        return findByCountryName.get();
-
+    public List<Country> findByCountryName(String countryName) {
+        List<Country> findByCountryName = countryRepository.findCountryByCountryName(countryName);
+        if (!findByCountryName.isEmpty()){
+            return findByCountryName;
+        }
+        else {
+           throw  new IllegalArgumentException("Country not found");
+        }
     }
 
     /**
