@@ -14,4 +14,8 @@ public interface CountryRepository extends JpaRepository<Country, Long> {
 
     @Query("select c from Country c where countryName like %?1%")
     Optional<Country> findCountryByCountryName(String countryName);
+
+    Optional<Country> findByCountryName(String countryName);
+
+
 }

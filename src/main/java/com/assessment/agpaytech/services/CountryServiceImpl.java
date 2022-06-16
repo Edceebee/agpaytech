@@ -60,7 +60,7 @@ public class CountryServiceImpl implements CountryService {
      */
     @Override
     public Country addCountry(Country country) {
-        Optional<Country> findCountry = countryRepository.findCountryByCountryName(country.getCountryName());
+        Optional<Country> findCountry = countryRepository.findByCountryName(country.getCountryName());
         if (findCountry.isPresent()) {
             throw new IllegalArgumentException("Country already exist");
         }

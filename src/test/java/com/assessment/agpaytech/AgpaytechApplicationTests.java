@@ -38,6 +38,14 @@ class AgpaytechApplicationTests {
 
 	@Test
 	@Order(3)
+	void testToFindCountryByNamePartially() {
+		Country foundCountry = countryService.findByCountryName("Lon");
+
+		assertThat(foundCountry.getCountryName()).isEqualTo("London");
+	}
+
+	@Test
+	@Order(4)
 	void testToAddCountry() {
 		Country country = new Country(null, "South Africa");
 		Country foundCountry = countryService.addCountry(country);
