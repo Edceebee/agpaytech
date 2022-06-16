@@ -30,18 +30,18 @@ class AgpaytechApplicationTests {
 	@Test
 	@Order(2)
 	void testToFindCountryByName() {
-		Country foundCountry = countryService.findByCountryName("Nigeria");
+		List<Country> foundCountry = countryService.findByCountryName("Nigeria");
 
-		assertThat(foundCountry.getId()).isEqualTo(1);
-		assertThat(foundCountry.getCountryName()).isEqualTo("Nigeria");
+		assertThat(foundCountry.stream().findAny().get().getId()).isEqualTo(1);
+		assertThat(foundCountry.stream().findAny().get().getCountryName()).isEqualTo("Nigeria");
 	}
 
 	@Test
 	@Order(3)
 	void testToFindCountryByNamePartially() {
-		Country foundCountry = countryService.findByCountryName("Lon");
+		List<Country> foundCountry = countryService.findByCountryName("Lon");
 
-		assertThat(foundCountry.getCountryName()).isEqualTo("London");
+		assertThat(foundCountry.stream().findFirst().get().getCountryName()).isEqualTo("London");
 	}
 
 	@Test

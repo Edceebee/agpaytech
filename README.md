@@ -5,3 +5,5 @@
 - Postgresql
 - Java 8
 - Spring JPA
+
+## Written with unit test
